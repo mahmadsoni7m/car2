@@ -1,2 +1,3 @@
-# Keep application model metadata used by Kotlin serialization/reflection if added later.
--keepattributes *Annotation*
+# SONI CARD release rules
+-keep class tj.soni.card.data.models.** { *; }
+-keepattributes SourceFile,LineNumberTable

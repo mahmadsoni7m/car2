@@ -1,13 +1,6 @@
-#!/usr/bin/env sh
-set -eu
-VERSION=8.11.1
-BASE="${GRADLE_USER_HOME:-$HOME/.gradle}/soni-wrapper/gradle-$VERSION"
-if [ ! -x "$BASE/bin/gradle" ]; then
-  mkdir -p "$(dirname "$BASE")"
-  TMP="${BASE}.zip"
-  echo "Downloading Gradle $VERSION..."
-  if command -v curl >/dev/null 2>&1; then curl -fL "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip" -o "$TMP"; else wget -O "$TMP" "https://services.gradle.org/distributions/gradle-$VERSION-bin.zip"; fi
-  unzip -q "$TMP" -d "$(dirname "$BASE")"
-  rm -f "$TMP"
-fi
-exec "$BASE/bin/gradle" "$@"
+#!/bin/sh
+# Minimal Gradle wrapper launcher. The GitHub Actions workflow (and Android Studio)
+# regenerate the official wrapper files automatically if gradle-wrapper.jar is missing.
+APP_HOME=$(cd "$(dirname "$0")" && pwd -P)
+if [ -n "$JAVA_HOME" ] && [ -x "$JAVA_HOME/bin/java" ]; then JAVACMD="$JAVA_HOME/bin/java"; else JAVACMD=java; fi
+exec "$JAVACMD" -Xmx64m -Xms64m -classpath "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"

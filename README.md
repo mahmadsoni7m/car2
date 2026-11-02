@@ -1,55 +1,80 @@
-# SONI CARD v1.0
+# SONI CARD V1.0 (DEMO)
 
-SONI CARD is an original Tajik-first Android digital-wallet **UI demonstration** built with Kotlin, Jetpack Compose and Material 3. It runs offline with sample data. It is not a bank, payment service, stored-value wallet, or connection to any financial institution.
+Барномаи Android: интерфейси бонки рақамӣ (Kotlin + Jetpack Compose + Material 3).
+**Ин версия танҳо ДЕМО аст**: ҳамаи мавҷудӣ ва амалиётҳо тақлидӣ ва офлайн мебошанд. Пули воқеӣ, бонк ё API-и молиявӣ вуҷуд надорад.
 
-## What's included
+Android app: digital-banking UI demo. Package `tj.soni.card`, min SDK 26, languages: Tajik (default), Russian, English.
+**All money, cards and transactions are simulated. No real banking connectivity.**
 
-- Premium light interface, SONI CARD branding and virtual masked-card visual
-- 28 navigation destinations covering onboarding, authentication UI, dashboard, cards, transfers, payments, QR, history, statistics, notifications, profile, security, settings, language, support and about
-- Tajik, Russian and English UI text map; language selection updates the current UI
-- Local sample transactions, search and transaction filters
-- Demo freeze/unfreeze card control and hide/show balance
-- DataStore preference storage foundation, biometric capability dependency and input validation
-- Unit tests and GitHub Actions APK workflow
+---
 
-## Safety notice
+## Роҳнамо барои навкорон (APK-ро бо GitHub месозем)
 
-All balances, card details and transactions are fictional demo data. No real card number, CVV, bank password, SMS code or real PIN is requested. Transfer, top-up, withdrawal, payment and QR operations do not contact a bank and must not be used for real money. A production financial service requires licensed partners, authorized APIs, a secure backend, compliance review and independent security testing.
+### 1. ZIP-ро боргирӣ кунед
+`SONI-CARD-V1.0.zip`-ро ба телефон ё компютер захира кунед.
 
-## Beginner setup
+### 2. Кушодани ZIP
+Файлро «Extract / Распаковать» кунед. Папкаи `SONI-CARD` пайдо мешавад, ки дар дохилаш `app`, `gradle`, `.github`, `README.md` ҳаст.
 
-1. Download `SONI-CARD-V1.0.zip` from the link shared with this project and extract it.
-2. Open GitHub and create a new repository named `SONI-CARD`.
-3. Upload the extracted project contents (the `.github` folder must be included) to the repository's `main` branch. Alternatively, use Git from a terminal: `git init`, `git add .`, `git commit -m "Initial SONI CARD project"`, then add your GitHub remote and push `main`.
-4. Open the repository's **Actions** tab. The workflow starts automatically after a push to `main`; you can also select **Android CI** and choose **Run workflow**.
-5. Wait for the green successful workflow run. It runs unit tests and builds the debug APK.
-6. Open the completed workflow run, scroll to **Artifacts**, and download **SONI-CARD-APK**.
-7. Extract the artifact ZIP. Install `app-debug.apk` on an Android device. Android may ask you to allow installation from that source. Only install builds you trust.
-8. To update the app, edit the project, commit and push to `main`; GitHub Actions will build a new APK.
+### 3. Репозитории GitHub созед
+1. Ба github.com ворид шавед → **New repository**.
+2. Ном: `SONI-CARD`. **Public** ё **Private** — ихтиёрӣ. Ҳеҷ файл илова накунед (README/.gitignore не).
+3. **Create repository**.
 
-## Build locally
+### 4. Лоиҳаро боргузорӣ кунед
+1. Дар саҳифаи репозиторий **uploading an existing file** -ро пахш кунед.
+2. **Мундариҷаи** папкаи `SONI-CARD`-ро кашида ба саҳифа андозед (на худи папкаро, балки файлу папкаҳои дохили онро). Папкаи пинҳонии `.github` ҳатман бояд бошад.
+3. Поёнтар **Commit changes** (шохаи `main`).
 
-Use Android Studio with JDK 17 and Android SDK Platform 35 installed. Open this folder, allow Gradle sync, then run:
+> Агар браузер папкаи `.github`-ро нишон надиҳад, Git-ро истифода баред:
+> `git init && git add . && git commit -m "SONI CARD" && git branch -M main && git remote add origin <URL> && git push -u origin main`
 
-```bash
-./gradlew testDebugUnitTest --no-daemon
-./gradlew assembleDebug --no-daemon --stacktrace
+### 5. Actions-ро кушоед
+Дар репозиторий ҷадвали **Actions**-ро пахш кунед. Агар ҳисобшуда пурсад, **I understand my workflows, enable them** -ро интихоб кунед.
+
+### 6. Build APK-ро иҷро кунед
+Workflow **Android CI** худкор баъд аз боргузорӣ оғоз мешавад. Дастӣ: **Android CI → Run workflow → Run workflow**.
+Сохтан тақрибан 5–12 дақиқа мегирад. Тики сабз = муваффақ; xатои сурх = матни хаторо ба мо фиристед.
+
+### 7. SONI-CARD-APK-ро боргирӣ кунед
+Дар саҳифаи иҷрои муваффақ, поёнтар **Artifacts** → **SONI-CARD-APK** -ро пахш кунед. ZIP боргирӣ мешавад; дар дохилаш `app-debug.apk`.
+
+### 8. Насб дар Android
+1. `app-debug.apk`-ро ба телефон интиқол диҳед ва кушоед.
+2. Танзимот: «Allow installation from this source / Иҷозати насб аз ин манбаъ».
+3. **Install** → **Open**.
+4. Коди демои SMS: `123456` (дар экран низ нишон дода мешавад).
+
+### 9. Навсозии барнома баъдтар
+Файлҳоро дар репозиторий иваз кунед (ё `git push`) → Actions боз APK месозад → APK-и навро насб кунед (маълумот нигоҳ дошта мешавад, зеро номи бастаи `tj.soni.card` ва имзои debug як хел мемонад ҳангоми сохтан дар ҳамон муҳити GitHub; агар насб нашуд, барномаи кӯҳнаро нест кунед).
+
+---
+
+## Сохтор / Structure
+```
+app/src/main/java/tj/soni/card/
+  MainActivity.kt           — AppCompatActivity (BiometricPrompt + per-app language)
+  navigation/               — Routes, NavGraph (28 screens), auth guard
+  ui/theme|components|screens
+  data/local (DataStore), data/models, data/repository (DEMO in-memory data)
+  domain/                   — validators, formatters, statistics
+  security/                 — PBKDF2 PIN hash, Android Keystore AES-GCM, BiometricHelper
+  localization/             — LocaleManager (tg / ru / en)
+  viewmodel/AppViewModel.kt
+app/src/test/               — unit tests (validators, stats, PIN hashing, demo repository)
 ```
 
-APK: `app/build/outputs/apk/debug/app-debug.apk`.
+## Security notes
+- PIN is never stored: only a PBKDF2 hash with salt, additionally encrypted with an Android Keystore key.
+- No real card numbers, CVV, bank passwords or SMS credentials are collected or generated. Cards show masked numbers only.
+- Only permission: `USE_BIOMETRIC`. No INTERNET permission, no camera (the QR screen is a simulated DEMO viewfinder).
+- Real transfers/deposits/QR payments stay disabled until authorized financial APIs and a compliant backend exist.
 
-The included `gradlew` is a small self-bootstrapping launcher that downloads pinned Gradle 8.11.1 on first use. It intentionally avoids checking in a binary wrapper JAR; network access is required on first invocation. The GitHub workflow uses the same launcher.
+## Notes
+- Tajik uses the Android language code `tg` (`values-tg`).
+- Demo transactions reset when the app process restarts (in-memory demo repository). Settings, profile and PIN persist.
+- Release builds are not signed; use the Debug APK for testing.
 
-## Project details
-
-- Application ID: `tj.soni.card` (debug APK application ID has `.debug` suffix)
-- Minimum SDK: 26
-- Compile/target SDK: 35
-- Kotlin: 2.0.21
-- Android Gradle Plugin: 8.9.2
-- Gradle distribution: 8.11.1
-- UI: Jetpack Compose + Material 3
-
-## License
-
-MIT. See [LICENSE](LICENSE).
+## Local build (optional)
+Open the folder in Android Studio (JDK 17). Android Studio regenerates the official Gradle wrapper. Command line:
+`./gradlew assembleDebug` and `./gradlew testDebugUnitTest`.
